@@ -1,0 +1,11 @@
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/bin/Debug/net9.0/SpringToNet.Domain.deps.json
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/bin/Debug/net9.0/SpringToNet.Domain.dll
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/bin/Debug/net9.0/SpringToNet.Domain.pdb
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/SpringToNet.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/SpringToNet.Domain.AssemblyInfoInputs.cache
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/SpringToNet.Domain.AssemblyInfo.cs
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/SpringToNet.Domain.csproj.CoreCompileInputs.cache
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/SpringToNet.Domain.dll
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/refint/SpringToNet.Domain.dll
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/SpringToNet.Domain.pdb
+/Users/cezarmocanu/dotnet-spring-comparison/SpringToNet.Domain/obj/Debug/net9.0/ref/SpringToNet.Domain.dll

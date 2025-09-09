@@ -1,0 +1,77 @@
+version: "3.8"
+
+services:
+  # PostgreSQL Database - equivalent to Spring Boot database configuration
+  postgres:
+    image: postgres:16-alpine
+    container_name: springtonet-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: springtonet
+      POSTGRES_USER: springtonet_user
+      POSTGRES_PASSWORD: springtonet_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U springtonet_user -d springtonet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - springtonet-network
+
+  # .NET API Application
+  api:
+    build:
+      context: .
+      dockerfile: SpringToNet.Api/Dockerfile
+    container_name: springtonet-api
+    restart: unless-stopped
+    environment:
+      # Database connection string
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=springtonet;Username=springtonet_user;Password=springtonet_password"
+      # Logging
+      Logging__LogLevel__Default: "Information"
+      Logging__LogLevel__Microsoft.AspNetCore: "Warning"
+      # Allow hosts
+      AllowedHosts: "*"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - springtonet-network
+
+  # Optional: pgAdmin for database management (like phpMyAdmin for MySQL)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: springtonet-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@springtonet.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - springtonet-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  springtonet-network:
+    driver: bridge

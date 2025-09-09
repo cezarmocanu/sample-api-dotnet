@@ -1,0 +1,44 @@
+# .dockerignore - similar to .gitignore but for Docker builds
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+
+# IDE files
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+
+# Build outputs
+**/bin/
+**/obj/
+**/out/
+**/TestResults/
+
+# Dependencies
+**/node_modules/
+**/packages/
+
+# Logs
+*.log
+
+# Runtime files
+*.user
+*.suo
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore
